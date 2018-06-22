@@ -23,7 +23,7 @@ One of the big challenges of real-time processing solutions is to ingest, proces
 
 A real-time processing architecture has the following logical components.
 
-- **Real-time message ingestion.** The architecture must include a way to capture and store real-time messages to be consumed by a stream processing consumer. In simple cases, this service could be implemented as a simple data store in which new messages are deposited in a folder. But often the solution requires a message broker, such as Azure Event Hubs, that acts as a buffer for the messages. The message broker should support scale-out processing and reliable delivery.
+- **Real-time message ingestion.** The architecture must include a way to capture and store real-time messages to be consumed by a stream processing consumer. In simple cases, this service could be implemented as a simple data store in which new messages are deposited in a folder. But often the solution requires a specialized message broker, such as Azure Event Hubs, that acts as a buffer for the messages. The message broker should support high throughput message ingestion, and support the stream processing application in scale-out processing and reliable delivery.
 
 - **Stream processing.** After capturing real-time messages, the solution must process them by filtering, aggregating, and otherwise preparing the data for analysis.
 
@@ -53,7 +53,7 @@ For more information, see [Data storage](../technology-choices/data-storage.md).
 
 - **Azure Stream Analytics**. Azure Stream Analytics can run perpetual queries against an unbounded stream of data. These queries consume streams of data from storage or message brokers, filter and aggregate the data based on temporal windows, and write the results to sinks such as storage, databases, or directly to reports in Power BI.
 - **Storm**. Apache Storm is an open source framework for stream processing that uses a topology of spouts and bolts to consume, process, and output the results from real-time streaming data sources. You can provision Storm in an Azure HDInsight cluster, and implement a topology in Java or C#.
-- **Spark Streaming**. Apache Spark is an open source distributed platform for general data processing. Spark provides the Spark Streaming API, in which you can write code in any supported Spark language, including Java, Scala, and Python. Spark 2.0 introduced the Spark Structured Streaming API, which provides a simpler and more consistent programming model. Spark 2.0 is available in an Azure HDInsight cluster.
+- **Spark Streaming**. Apache Spark is an open source distributed platform for general data processing. Spark provides the Spark Streaming API, in which you can write code in any supported Spark language, including Java, Scala, and Python. Spark 2.0 introduced the Spark Structured Streaming API, which provides a simpler and more consistent programming model. Spark 2.0 and later is available in an Azure Databricks cluster. 
 
 For more information, see [Stream processing](../technology-choices/stream-processing.md).
 
@@ -66,6 +66,8 @@ For more information, see [Analytical data stores](../technology-choices/analyti
 ### Analytics and reporting
 
 - **Azure Analysis Services**, **Power BI**, and **Microsoft Excel**. Processed real-time data that is stored in an analytical data store can be used for historical reporting and analysis in the same way as batch processed data. Additionally, Power BI can be used to publish real-time (or near-real-time) reports and visualizations from analytical data sources where latency is sufficiently low, or in some cases directly from the stream processing output.
+
+- **Azure Databricks**. Azure Databricks notebooks can be constructed to present reports and visualizations that update in near-real time based on the streaming data processed with Spark Structured Streaming. Additionally, by creating a scheduled job, you can create dashboards that update periodically against processed streaming data, with the dashboard visualizations automatically updating each time the scheduled job runs.  
 
 For more information, see [Analytics and reporting](../technology-choices/analysis-visualizations-reporting.md).
 
