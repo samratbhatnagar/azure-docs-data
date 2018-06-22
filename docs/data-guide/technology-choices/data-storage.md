@@ -29,9 +29,9 @@ Azure Storage is a managed storage service that is highly available, secure, dur
 
 There are various Azure Storage services you can use to store data. The most flexible option for storing blobs from a number of data sources is [Blob storage](/azure/storage/blobs/storage-blobs-introduction). Blobs are basically files. They store pictures, documents, HTML files, virtual hard disks (VHDs), big data such as logs, database backups &mdash; pretty much anything. Blobs are stored in containers, which are similar to folders. A container provides a grouping of a set of blobs. A storage account can contain an unlimited number of containers, and a container can store an unlimited number of blobs.
 
-Azure Storage is a good choice for big data and analytics solutions, because of its flexibility, high availability, and low cost. It provides hot, cool, and archive storage tiers for different use cases. For more information, see [Azure Blob Storage: Hot, cool, and archive storage tiers](/azure/storage/blobs/storage-blob-storage-tiers).
+Azure Storage is generally a good choice for big data and analytics solutions, because of its flexibility, large storage limits, high availability, good performance, availability in all Azure regions and low cost. It provides hot, cool, and archive storage tiers for different use cases. For more information, see [Azure Blob Storage: Hot, cool, and archive storage tiers](/azure/storage/blobs/storage-blob-storage-tiers).
 
-Azure Blob storage can be accessed from Hadoop (available through HDInsight). HDInsight can use a blob container in Azure Storage as the default file system for the cluster. Through a Hadoop distributed file system (HDFS) interface provided by a WASB driver, the full set of components in HDInsight can operate directly on structured or unstructured data stored as blobs. Azure Blob storage can also be accessed via Azure SQL Data Warehouse using its PolyBase feature.
+Azure Blob storage can be accessed from Spark (using Azure Databricks) and  Hadoop (available through HDInsight). Azure Databricks supports accessing blob containers through its Databricks File System (DBFS). HDInsight can use a blob container in Azure Storage as the default file system for the cluster. Through a Hadoop distributed file system (HDFS) interface provided by a WASB driver, the full set of components in HDInsight can operate directly on structured or unstructured data stored as blobs. Azure Blob storage can also be accessed via Azure SQL Data Warehouse using its PolyBase feature.
 
 Other features that make Azure Storage a good choice are:
 
@@ -48,7 +48,7 @@ Data Lake Store does not impose any limits on account sizes, file sizes, or the 
 
 Data Lake Store can be accessed from Hadoop (available through HDInsight) using the WebHDFS-compatible REST APIs. You may consider using this as an alternative to Azure Storage when your individual or combined file sizes exceed that which is supported by Azure Storage. However, there are [performance tuning guidelines](/azure/data-lake-store/data-lake-store-performance-tuning-guidance#optimizing-io-intensive-jobs-on-hadoop-and-spark-workloads-on-hdinsight) you should follow when using Data Lake Store as your primary storage for an HDInsight cluster, with specific guidelines for [Spark](/azure/data-lake-store/data-lake-store-performance-tuning-spark), [Hive](/azure/data-lake-store/data-lake-store-performance-tuning-hive), [MapReduce](/azure/data-lake-store/data-lake-store-performance-tuning-mapreduce), and [Storm](/azure/data-lake-store/data-lake-store-performance-tuning-storm). Also, be sure to check Data Lake Store's [regional availability](https://azure.microsoft.com/regions/#services), because it is not available in as many regions as Azure Storage, and it needs to be located in the same region as your HDInsight cluster.
 
-Coupled with Azure Data Lake Analytics, Data Lake Store is specifically designed to enable analytics on the stored data and is tuned for performance for data analytics scenarios. Data Lake Store can also be accessed via Azure SQL Data Warehouse using its PolyBase feature.
+Coupled with Azure Data Lake Analytics, Data Lake Store is specifically designed to enable analytics on the stored data and is tuned for performance for data analytics scenarios. Data Lake Store can also be accessed via Azure Databricks through its Databricks File System (DBFS) or using Azure SQL Data Warehouse via its PolyBase feature.
 
 ## Azure Cosmos DB
 
@@ -99,7 +99,7 @@ The following tables summarize the key differences in capabilities.
 | Auditing | Available.  |Available |
 | Encryption at rest | Transparent, server side | Transparent, server side; Client-side encryption |
 | Developer SDKs | .NET, Java, Python, Node.js | .Net, Java, Python, Node.js, C++, Ruby |
-| Analytics workload performance | Optimized performance for parallel analytics workloads, High Throughput and IOPS | Not optimized for analytics workloads |
+| Analytics workload performance | Optimized performance for parallel analytics workloads, High Throughput and IOPS | Suitable for most analytics workloads |
 | Size limits | No limits on account sizes, file sizes or number of files | Specific limits documented [here](/azure/azure-subscription-service-limits#storage-limits) |
 | Geo-redundancy | Locally-redundant (multiple copies of data in one Azure region) | Locally redundant (LRS), globally redundant (GRS), read-access globally redundant (RA-GRS). See [here](/azure/storage/common/storage-redundancy) for more information |
 
