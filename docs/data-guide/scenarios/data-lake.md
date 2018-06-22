@@ -33,4 +33,5 @@ Data lake stores are often used in event streaming or IoT scenarios, because the
 
 - [Data Lake Store](/azure/data-lake-store/) is a hyper-scale, Hadoop-compatible repository.
 - [Data Lake Analytics](/azure/data-lake-analytics/) is an on-demand analytics job service to simplify big data analytics.
+- [Azure Databricks](/azure-databricks/what-is-azure-databricks/) provides scalable cluster based and serverless processing of data stored in a data lake.
 
