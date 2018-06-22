@@ -13,7 +13,7 @@ Free-form text processing is performed against documents containing paragraphs o
 
 In Azure, the following services provide natural language processing (NLP) capabilities:
 
-- [Azure HDInsight with Spark and Spark MLlib](/azure/hdinsight/spark/apache-spark-overview)
+- [Azure Databricks with Spark and Spark MLlib](/azure/azure-databricks/what-is-azure-databricks)
 - [Microsoft Cognitive Services](/azure/#pivot=products&panel=cognitive)
 
 ## Key selection criteria
@@ -22,9 +22,9 @@ To narrow the choices, start by answering these questions:
 
 - Do you want to use prebuilt models? If yes, consider using the APIs offered by Microsoft Cognitive Services.
 
-- Do you need to train custom models against a large corpus of text data? If yes, consider using Azure HDInsight with Spark MLlib and Spark NLP.
+- Do you need to train custom models against a large corpus of text data? If yes, consider using Azure Databricks with Spark MLlib and Spark NLP.
 
-- Do you need low-level NLP capabilities like tokenization, stemming, lemmatization, and term frequency/inverse document frequency (TF/IDF)? If yes, consider using Azure HDInsight with Spark MLlib and Spark NLP.
+- Do you need low-level NLP capabilities like tokenization, stemming, lemmatization, and term frequency/inverse document frequency (TF/IDF)? If yes, consider using Azure Databricks with Spark MLlib and Spark NLP.
 
 - Do you need simple, high-level NLP capabilities like entity and intent identification, topic detection, spell check, or sentiment analysis? If yes, consider using the APIs offered by Microsoft Cognitive Services.
 
@@ -34,16 +34,16 @@ The following tables summarize the key differences in capabilities.
 
 ### General capabilities
 
-| | Azure HDInsight | Microsoft Cognitive Services |
+| | Azure Databricks | Microsoft Cognitive Services |
 | --- | --- | --- |
 | Provides pretrained models as a service | No | Yes |
 | REST API | Yes | Yes |
-| Programmability | Python, Scala, Java | C#, Java, Node.js, Python, PHP, Ruby |
+| Programmability | Python, R, Scala, Java | C#, Java, Node.js, Python, PHP, Ruby |
 | Support processing of big data sets and large documents | Yes | No |
 
 ### Low-level natural language processing capabilities
 
-| | Azure HDInsight | Microsoft Cognitive Services |  
+| | Azure Databricks | Microsoft Cognitive Services |  
 | --- | --- | --- | 
 | Tokenizer | Yes (Spark NLP) | Yes (Linguistic Analysis API) |
 | Stemmer | Yes (Spark NLP) | No |
@@ -56,7 +56,7 @@ The following tables summarize the key differences in capabilities.
 
 ### High-level natural language processing capabilities
 
-| | Azure HDInsight | Microsoft Cognitive Services |
+| | Azure Databricks | Microsoft Cognitive Services |
 | --- | --- | --- | 
 | Entity/intent identification & extraction | No | Yes (Language Understanding Intelligent Service (LUIS) API) |    
 | Topic detection | Yes (Spark NLP) | Yes (Text Analytics API) |
