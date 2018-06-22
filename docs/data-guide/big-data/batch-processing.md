@@ -45,26 +45,27 @@ The following technologies are recommended choices for batch processing solution
 
 ### Data storage
 
-- **Azure Storage Blob Containers**. Many existing Azure business processes already make use of Azure blob storage, making this a good choice for a big data store.
-- **Azure Data Lake Store**. Azure Data Lake Store offers virtually unlimited storage for any size of file, and extensive security options, making it a good choice for extremely large-scale big data solutions that require a centralized store for data in heterogeneous formats.
+- **Azure Storage Blob Containers**. Many existing Azure business processes already make use of Azure blob storage, making this generally a good choice for a big data store in any Azure region. 
+- **Azure Data Lake Store**. Azure Data Lake Store offers virtually unlimited storage for any size of file, and extensive security options, making it a good choice for extremely large-scale big data solutions that require the highest throughput.
 
 For more information, see [Data storage](../technology-choices/data-storage.md).
 
 ### Batch processing
 
 - **U-SQL**. U-SQL is the query processing language used by Azure Data Lake Analytics. It combines the declarative nature of SQL with the procedural extensibility of C#, and takes advantage of parallelism to enable efficient processing of data at massive scale.
-- **Hive**. Hive is a SQL-like language that is supported in most Hadoop distributions, including HDInsight. It can be used to process data from any HDFS-compatible store, including Azure blob storage and Azure Data Lake Store.
-- **Pig**. Pig is a declarative big data processing language used in many Hadoop distributions, including HDInsight. It is particularly useful for processing data that is unstructured or semi-structured.
-- **Spark**. The Spark engine supports batch processing programs written in a range of languages, including Java, Scala, and Python. Spark uses a distributed architecture to process data in parallel across multiple worker nodes.
+- **Spark**. The Spark engine supports batch processing programs written in a range of languages, including Java, Scala, Python and R. Spark uses a distributed architecture to process data in parallel across multiple worker nodes. Spark workloads are run using Azure Databricks.
+- **Hive**. HiveQL is a SQL-like language that is supported in most Hadoop distributions, including HDInsight. It can be used to process data from any HDFS-compatible store, including Azure blob storage and Azure Data Lake Store.
+- **Pig**. Pig Latin is a declarative big data processing language used in many Hadoop distributions, including HDInsight. It is particularly useful for processing data that is unstructured or semi-structured.
+
 
 For more information, see [Batch processing](../technology-choices/batch-processing.md).
 
 ### Analytical data store
 
 - **SQL Data Warehouse**. Azure SQL Data Warehouse is a managed service based on SQL Server database technologies and optimized to support large-scale data warehousing workloads.
-- **Spark SQL**. Spark SQL is an API built on Spark that supports the creation of dataframes and tables that can be queried using SQL syntax.
-- **HBase**. HBase is a low-latency NoSQL store that offers a high-performance, flexible option for querying structured and semi-structured data.
-- **Hive**. In addition to being useful for batch processing, Hive offers a database architecture that is conceptually similar to that of a typical relational database management system. Improvements in Hive query performance through innovations like the Tez engine and Stinger initiative mean that Hive tables can be used effectively as sources for analytical queries in some scenarios.
+- **Spark SQL**. Spark SQL is an API built on Spark that supports the creation of dataframes and tables that can be queried using SQL syntax. Spark SQL workloads are run using Azure Databricks.
+- **HBase**. HBase is a low-latency NoSQL store that offers a high-performance, flexible option for querying structured and semi-structured data. It is available in HDInsight.
+- **Hive**. In addition to being useful for batch processing, Hive offers a database architecture that is conceptually similar to that of a typical relational database management system. Improvements in Hive query performance through innovations like the Tez engine, Stinger and LLAP initiatives mean that Hive tables in HDInsight can be used effectively as sources for analytical queries.
 
 For more information, see [Analytical data stores](../technology-choices/analytical-data-stores.md).
 
@@ -78,7 +79,8 @@ For more information, see [Analytics and reporting](../technology-choices/analys
 
 ### Orchestration
 
-- **Azure Data Factory**. Azure Data Factory pipelines can be used to define a sequence of activities, scheduled for recurring temporal windows. These activities can initiate data copy operations as well as Hive, Pig, MapReduce, or Spark jobs in on-demand HDInsight clusters; U-SQL jobs in Azure Date Lake Analytics; and stored procedures in Azure SQL Data Warehouse or Azure SQL Database.
-- **Oozie** and **Sqoop**. Oozie is a job automation engine for the Apache Hadoop ecosystem and can be used to initiate data copy operations as well as Hive, Pig, and MapReduce jobs to process data and Sqoop jobs to copy data between HDFS and SQL databases.
+- **Azure Data Factory**. Azure Data Factory pipelines can be used to define a sequence of activities, scheduled for recurring temporal windows. These activities can initiate data copy operations as well as Hive, Pig, MapReduce, or Spark jobs using Azure Databricks; U-SQL jobs in Azure Date Lake Analytics; and stored procedures in Azure SQL Data Warehouse or Azure SQL Database.
+- **Azure Databricks**. Azure Databricks can orchestrate the execution of Spark based notebooks or Spark applications packaged in JAR files through the Jobs feature. Jobs can be built that execute on a scheduled basis or on-demand and can be parameterized with different values for each execution. Additionally, Notebook Workflows can be used to construct, parameterize and conditionally execute a pipeline of notebooks capable of returning the results from each notebook execution. 
+- **Oozie** and **Sqoop**. Oozie is a job automation engine for the Apache Hadoop ecosystem and can be used to initiate data copy operations as well as Hive, Pig, and MapReduce jobs to process data and Sqoop jobs to copy data between HDFS and SQL databases. Oozie is available on HDInsight clusters.
 
 For more information, see [Pipeline orchestration](../technology-choices/pipeline-orchestration-data-movement.md)
