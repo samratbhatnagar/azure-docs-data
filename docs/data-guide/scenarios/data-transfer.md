@@ -44,6 +44,9 @@ Consider these options when you want scripted and programmatic data transfer.
 
 - **Hadoop command line**. When you have data that resides on an HDInsight cluster head node, you can use the `hadoop -copyFromLocal` command to copy that data to your cluster's attached storage, such as Azure Storage blob or Azure Data Lake Store. In order to use the Hadoop command, you must first connect to the head node. Once connected, you can upload a file to storage.
 
+- **Databricks File System and CLI**. [Databricks File System](https://docs.azuredatabricks.net/user-guide/dbfs-databricks-file-system.html) (DBFS) is a distributed file system installed with Azure Databricks which provides a layer over Azure Blob storage and Azure Data Lake Store. You can use the Databricks Utilities within Databricks notebooks that you run within a Databricks cluster or use the Databricks CLI from remote machines to manage data stored in either Azure Blob storage or Azure Data Lake Store. 
+
+
 ## Graphical interface
 
 Consider the following options if you are only transferring a few files or data objects and don't need to automate the process.
