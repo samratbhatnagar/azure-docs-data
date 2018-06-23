@@ -19,9 +19,9 @@ Most advanced analytics architectures include some or all of the following compo
 
 * **Data storage**. Advanced analytics solutions require data to train machine learning models. Data scientists typically need to explore the data to identify its predictive features and the statistical relationships between them and the values they predict (known as a label). The predicted label can be a quantitative value, like the financial value of something in the future or the duration of a flight delay in minutes. Or it might represent a categorical class, like "true" or "false," "flight delay" or "no flight delay," or categories like "low risk," "medium risk," or "high risk."
 
-* **Batch processing**. To train a machine learning model, you typically need to process a large volume of training data. Training the model can take some time (on the order of minutes to hours). This training can be performed using scripts written in languages such as Python or R, and can be scaled out to reduce training time using distributed processing platforms like Apache Spark hosted in HDInsight or a Docker container.
+* **Batch processing**. To train a machine learning model, you typically need to process a large volume of training data. Training the model can take some time (on the order of minutes to hours). This training can be performed using scripts written in languages such as Python or R, and can be scaled out to reduce training time using distributed processing platforms like Apache Spark hosted in Azure Databricks.
 
-* **Real-time message ingestion**. In production, many advanced analytics feed real-time data streams to a predictive model that has been published as a web service. The incoming data stream is typically captured in some form of queue and a stream processing engine pulls the data from this queue and applies the prediction to the input data in near real time.  
+* **Real-time message ingestion**. In production, many advanced analytics feed real-time data streams to a predictive model that has been published as a web service. The incoming data stream is typically captured in some form of queue and a stream processing engine pulls the data from this queue and applies the prediction to the input data in near real time.   
 
 * **Stream processing**. Once you have a trained model, prediction (or scoring) is typically a very fast operation (on the order of milliseconds) for a given set of features. After capturing real-time messages, the relevant feature values can be passed to the predictive service to generate a predicted label.
 
@@ -36,7 +36,7 @@ Machine learning is a mathematical modeling technique used to train a predictive
 
 Machine learning modeling is usually performed by data scientists, who need to thoroughly explore and prepare the data before training a model. This exploration and preparation typically involves a great deal of interactive data analysis and visualization &mdash; usually using languages such as Python and R in interactive tools and environments that are specifically designed for this task.
 
-In some cases, you may be able to use [pretrained models](/machine-learning-server/install/microsoftml-install-pretrained-models) that come with training data obtained and developed by Microsoft. The advantage of pretrained models is that you can score and classify new content right away, even if you don't have the necessary training data, the resources to manage large datasets or to train complex models.
+In some cases, you may be able to use [pretrained models](https://gallery.azure.ai/models) that have been trained with data obtained and developed by Microsoft or the data science community. The advantage of pretrained models is that you can score and classify new content right away, even if you don't have the necessary training data, the resources to manage large datasets or to train complex models.
 
 There are two broad categories of machine learning:
 
@@ -47,18 +47,20 @@ There are two broad categories of machine learning:
 Relevant Azure services:
 
 - [Azure Machine Learning](/azure/machine-learning/)
+- [Machine Learning on Azure Databricks](https://docs.azuredatabricks.net/spark/latest/mllib/index.html)
 - [Machine Learning Server (R Server) on HDInsight](/azure/hdinsight/r-server/r-server-overview)
 
 ## Deep learning
 
 Machine learning models based on mathematical techniques like linear or logistic regression have been available for some time. More recently, the use of *deep learning* techniques based on neural networks has increased. This is driven partly by the availability of highly scalable processing systems that reduce how long it takes to train complex models. Also, the increased prevalence of big data makes it easier to train deep learning models in a variety of domains.
 
-When designing a cloud architecture for advanced analytics, you should consider the need for large-scale processing of deep learning models. These can be provided through distributed processing platforms like Apache Spark and the latest generation of virtual machines that include access to GPU hardware.
+When designing a cloud architecture for advanced analytics, you should consider the need for large-scale processing of deep learning models. This can be achieved through single node options that provide access to powerful virtual machines with GPU hardware, to distributed processing platforms like Apache Spark and the latest generation of services that include access to clusters of GPU hardware like Azure Databricks and Azure Batch AI.
 
 Relevant Azure services:
 
+- [Deep Learning with Apache Spark on Azure Databricks](https://docs.azuredatabricks.net/applications/deep-learning/index.html)
+- [Deep Learning with Azure Batch AI](https://github.com/Azure/BatchAI)
 - [Deep Learning Virtual Machine](/azure/machine-learning/data-science-virtual-machine/deep-learning-dsvm-overview)
-- [Apache Spark on HDInsight](/azure/hdinsight/spark/apache-spark-overview)
 
 ## Artificial intelligence
 
@@ -70,8 +72,8 @@ The predictive services that support AI applications may leverage custom machine
 
 Relevant Azure services:
 
-- [Azure Machine Learning](/azure/machine-learning/)
-- [Machine Learning Server (R Server) on HDInsight](/azure/hdinsight/r-server/r-server-overview)
+- [Model Deployment with Azure Machine Learning](/azure/machine-learning/desktop-workbench/model-management-service-deploy)
+- [Model Deployment with Azure Databricks](https://docs.azuredatabricks.net/spark/latest/mllib/index.html#ml-model-export)
 
 
 ## See also
