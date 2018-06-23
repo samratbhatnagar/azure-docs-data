@@ -17,6 +17,7 @@ There are several options for analysis, visualizations, and reporting in Azure, 
 - [Jupyter Notebooks](https://jupyter.readthedocs.io/en/latest/index.html)
 - [Zeppelin Notebooks](https://zeppelin.apache.org/)
 - [Microsoft Azure Notebooks](https://notebooks.azure.com/)
+- [Azure Databricks Notebooks](https://docs.azuredatabricks.net/user-guide/notebooks/index.html)
 
 ### Power BI
 
@@ -54,6 +55,14 @@ Considerations:
 * You will be unable to access your notebooks when offline.
 * Limited processing capabilities of the free notebook service may not be enough to train large or complex models.
 
+### Azure Databricks Notebooks
+[Azure Databricks Notebooks](https://docs.azuredatabricks.net/user-guide/notebooks/index.html) are the notebook experience integrated with Azure Databricks. Databricks notebooks support Python, R and Scala. Out of the box they include interactive and nicely configured visualizations, but also support the open source charting libraries like ggplot, matplotlib, bokeh and seaborn. 
+
+Given the Azure Databricks focus of being the premiere place to run Spark they provide an enhanced experience for the execution of Spark code that includes things like live-updating status bars that report on distributed job progress, error highlighting that make it easier to see what went wrong both in the code and with clear error messages, and built-in support for running structured streaming jobs and showing updated data in tables and visuzalizations in near real-time. 
+
+Azure Databricks enhances the notebook experience by enabling access controls on notebooks, widgets that allow notebook authors to provide better interactive experiences, integrated version control (enabling easy versioning of notebooks in repositories like GitHub), easy selection and switching of the cluster supporting the notebook and simplified dependency management. Additionally, notebooks created with Azure Databricks can also be packaged up as presentation friendly dashboards. 
+
+
 ## Key selection criteria
 
 To narrow the choices, start by answering these questions:
@@ -72,24 +81,26 @@ The following tables summarize the key differences in capabilities.
 
 ### General capabilities
 
-| | Power BI | Jupyter Notebooks | Zeppelin Notebooks | Microsoft Azure Notebooks |
-| --- | --- | --- | --- | --- |
-| Connect to big data cluster for advanced processing | Yes | Yes | Yes | No |
-| Managed service | Yes | Yes <sup>1</sup> | Yes <sup>1</sup> | Yes |
-| Connect to 100s of data sources | Yes | No | No | No |
-| Offline capabilities | Yes <sup>2</sup> | No | No | No |
-| Embedding capabilities | Yes | No | No | No |
-| Automatic data refresh | Yes | No | No | No |
-| Access to numerous open source packages | No | Yes <sup>3</sup> | Yes <sup>3</sup> | Yes <sup>4</sup> |
-| Data transformation/cleansing options | [Power Query](https://powerbi.microsoft.com/blog/getting-started-with-power-query-part-i/), R | 40 languages, including Python, R, Julia, and Scala | 20+ interpreters, including Python, JDBC, and R | Python, F#, R |
-| Pricing | Free for Power BI Desktop (authoring), see [pricing](https://powerbi.microsoft.com/pricing/) for hosting options | Free | Free | Free |
-| Multiuser collaboration | [Yes](/power-bi/service-how-to-collaborate-distribute-dashboards-reports) | Yes (through sharing or with a multiuser server like [JupyterHub](https://github.com/jupyterhub/jupyterhub)) | Yes | Yes (through sharing) |
+| | Power BI | Jupyter Notebooks | Zeppelin Notebooks | Microsoft Azure Notebooks | Azure Databricks Notebooks |
+| --- | --- | --- | --- | --- | --- |
+| Connect to big data cluster for advanced processing | Yes | Yes | Yes | No | Yes |
+| Managed service | Yes | Yes <sup>1</sup> | Yes <sup>1</sup> | Yes | Yes |
+| Connect to 100s of data sources | Yes | No | No | No | No |
+| Offline capabilities | Yes <sup>2</sup> | No | No | No | No |
+| Embedding capabilities | Yes | No | No | No | No |
+| Automatic data refresh | Yes | No | No | No | Yes |
+| Access to numerous open source packages | No | Yes <sup>3</sup> | Yes <sup>3</sup> | Yes <sup>4</sup> | Yes <sup>5</sup> |
+| Data transformation/cleansing options | [Power Query](https://powerbi.microsoft.com/blog/getting-started-with-power-query-part-i/), R | 40 languages, including Python, R, Julia, and Scala | 20+ interpreters, including Python, JDBC, and R | Python, F#, R | Scala, Python, R, SQL |
+| Pricing | Free for Power BI Desktop (authoring), see [pricing](https://powerbi.microsoft.com/pricing/) for hosting options | Free | Free | Free | Included with Azure Databricks Account |
+| Multiuser collaboration | [Yes](/power-bi/service-how-to-collaborate-distribute-dashboards-reports) | Yes (through sharing or with a multiuser server like [JupyterHub](https://github.com/jupyterhub/jupyterhub)) | Yes | Yes (through sharing) | Yes |
 
 [1] When used as part of a managed HDInsight cluster.
 
 [2] With the use of Power BI Desktop.
 
-[2] You can search the [Maven repository](http://search.maven.org/) for community-contributed packages.
+[3] You can search the [Maven repository](http://search.maven.org/) for community-contributed packages.
 
-[3] Python packages can be installed using either pip or conda. R packages can be installed from CRAN or GitHub. Packages in F# can be installed via nuget.org using the [Paket dependency manager](https://fsprojects.github.io/Paket/).
+[4] Python packages can be installed using either pip or conda. R packages can be installed from CRAN or GitHub. Packages in F# can be installed via nuget.org using the [Paket dependency manager](https://fsprojects.github.io/Paket/).
+
+[5] Azure Databricks provides a first-class experience for package management across all support languages via its [libraries](https://docs.azuredatabricks.net/user-guide/libraries.html) feature.
 
