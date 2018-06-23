@@ -70,6 +70,10 @@ Artificial intelligence (AI) refers to scenarios where a machine mimics the cogn
 
 The predictive services that support AI applications may leverage custom machine learning models, or off-the-shelf cognitive services that provide access to pretrained models. The process of deploying custom models into production is known as operationalization, where the same AI models that are trained and tested within the processing environment are serialized and made available to external applications and services for batch or self-service predictions. To use the predictive capability of the model, it is deserialized and loaded using the same machine learning library that contains the algorithm that was used to train the model in the first place. This library provides predictive functions (often called score or predict) that take the model and features as input and return the prediction. This logic is then wrapped in a function that an application can call directly or can be exposed as a web service. 
 
+## Batch scoring
+
+In advanced analytics scenarios, the model is typically used to score data in a batch process that scores many records at once. The scored results are stored in an analytics data store for ease and performance of subsequent querying. The result is that the any applications that rely on the predictions made by the model are effectively using pre-cached predictions, which yields high throughput because the prediction is not made with each application request.  
+
 Relevant Azure services:
 
 - [Model Deployment with Azure Machine Learning](/azure/machine-learning/desktop-workbench/model-management-service-deploy)
