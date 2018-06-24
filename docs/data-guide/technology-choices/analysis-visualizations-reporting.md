@@ -56,7 +56,7 @@ Considerations:
 * Limited processing capabilities of the free notebook service may not be enough to train large or complex models.
 
 ### Azure Databricks Notebooks
-[Azure Databricks Notebooks](https://docs.azuredatabricks.net/user-guide/notebooks/index.html) are the notebook experience integrated with Azure Databricks. Databricks notebooks support Python, R and Scala. Out of the box they include interactive and nicely configured visualizations, but also support the open source charting libraries like ggplot, matplotlib, bokeh and seaborn. 
+[Azure Databricks Notebooks](https://docs.azuredatabricks.net/user-guide/notebooks/index.html) are the notebook experience integrated with Azure Databricks. Databricks notebooks support Python, R, SQL and Scala. Out of the box they include interactive and nicely configured visualizations, but also support the open source charting libraries like ggplot, matplotlib, bokeh and seaborn. 
 
 Given the Azure Databricks focus of being the premiere place to run Spark they provide an enhanced experience for the execution of Spark code that includes things like live-updating status bars that report on distributed job progress, error highlighting that make it easier to see what went wrong both in the code and with clear error messages, and built-in support for running structured streaming jobs and showing updated data in tables and visuzalizations in near real-time. 
 

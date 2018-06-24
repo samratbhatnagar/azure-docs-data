@@ -7,14 +7,14 @@ ms:date: 02/12/2018
 
 # Choosing a machine learning technology in Azure
 
-Data science and machine learning is a workload that is usually undertaken by data scientists. It requires specialist tools, many of which are designed specifically for the type of interactive data exploration and modeling tasks that a data scientist must perform.
+Data science and machine learning is a workload that is usually undertaken by data scientists. It requires specialized tools, many of which are designed specifically for the type of interactive data exploration and modeling tasks that a data scientist must perform.
 
 Machine learning solutions are built iteratively, and have two distinct phases:
 * Data preparation and modeling.
 * Deployment and consumption of predictive services.
 
 ## Tools and services for data preparation and modeling
-Data scientists typically prefer to work with data using custom code written in Python or R. This code is generally run interactively, with the data scientists using it to query and explore the data, generating visualizations and statistics to help determine the relationships with it. There are many interactive environments for R and Python that data scientists can use. A particular favorite is **Jupyter Notebooks** that provides a browser-based shell that enables data scientists to create *notebook* files that contain R or Python code and markdown text. This is an effective way to collaborate by sharing and documenting code and results in a single document.
+Data scientists typically prefer to work with data using custom code written in Python or R. This code is generally run interactively, with the data scientists using it to query and explore the data, generating visualizations and statistics to help determine the relationships within it. There are many interactive environments for R and Python that data scientists can use. A particular favorite is **Jupyter Notebooks** that provides a browser-based shell that enables data scientists to create *notebook* files that contain R or Python code and markdown text. This approach for modeling using notebooks has become a paradigm for data science, and as a result there now many other notebook options including Databricks Notebooks and Azure Notebooks. This is an effective way to collaborate by sharing and documenting code and results in a single document.
 
 Other commonly used tools include:
 * **Spyder**: The interactive development environment (IDE) for Python provided with the Anaconda Python distribution.
@@ -22,6 +22,37 @@ Other commonly used tools include:
 * **Visual Studio Code**: A lightweight, cross-platform coding environment that supports Python as well as commonly used frameworks for machine learning and AI development.
 
 In addition to these tools, data scientists can leverage Azure services to simplify code and model management.
+
+
+### Azure Databricks 
+[Azure Databricks](/azure/azure-databricks/what-is-azure-databricks) is the premiere place to run Spark workloads in Azure, and provides data scientists with an environment that supports the entire data science process. Owing to their deep integration with Azure Databricks, [Azure Databricks notebooks](https://docs.azuredatabricks.net/user-guide/notebooks/index.html) provide the most comprehensive notebook experience, supporting the entire data exploration and modeling life-cycle including purpose built features that support notebook authoring, dependency management, workspaces for organization and sharing of notebooks and artifacts, version control and automation. 
+
+Databricks notebooks support Python, R, SQL and Scala. Out of the box they include interactive and eye-pleasing visualizations, but also support the open source charting libraries like ggplot, matplotlib, bokeh and seaborn that data scientists are already familiar with.
+
+Databricks notebooks provide an enhanced experience for the execution of Spark code that includes things like live-updating status bars that report on distributed job progress, error highlighting that make it easier to see what went wrong both in the code and with clear error messages, and built-in support for running structured streaming jobs and showing updated data in tables and visualizations in near real-time and widgets that allow notebook authors to provide better interactive experiences when providing inputs to the notebook. Notebooks authored in Azure Databricks can be exported to a file and downloaded, or checked directly into version control repositories (such as GitHub).
+
+Azure Databricks enhances the overall notebook experience through an organizing feature called workspaces. Within a workspace, data scientists can organize their folder hierarchy of notebooks, scripts and libraries (e.g., python or R packages). They can securely share notebooks with specific users or drop them in shared folder for access by all users who have access to the workspace. Additionally, they can define tables that represent prepared data stored in Blob storage, Data Lake Store, SQL Data Warehouse or Cosmos DB enabling other data scientists on the team to query the prepared data in their own notebooks using SQL or the Spark Dataframe/Dataset API's. The workspace also allows the data scientist to configure role-based access controls against these tables, for example restricting which other members of the workspace can query them.   
+
+The workspace also provides access to the clusters that are available for the data scientist to use in executing their notebook code, and simplifies the tasks of switching between existing clusters (which can be done within an open notebook), configuring clusters with settings and libraries, and creating new clusters. 
+
+The clusters supported by Azure Databricks come in multiple flavors. There are standard clusters that are pre-provisioned by data scientists or data engineers to have a certain minimal capacity for both the Spark driver node and the Spark worker nodes. There are also serverless pools, where the resources to support interactive Spark workloads are provided dynamically by Azure Databricks itself,  where the Spark tasks are managed to ensure fairness across users and isolation between executing notebooks. Additionally, the clusters provide different Databricks runtime version. For example, the ML runtime provides clusters that pre-configured specifically for doing deep-learning, including the necessary scale-out GPU drivers and deep learning libraries. All options support autoscale, whereby the cluster will automatically scale compute up or down within a specified number of worker nodes according to the load (measured in terms of pending Spark tasks) on the cluster.  
+
+When it comes to model training and evaluation, Spark in Azure Databricks includes Spark MLlib, a framework and library for machine learning. The Microsoft Machine Learning library for Spark (MMLSpark) is also available and provides scale-out deep learning algorithm support for the training and evaluation of predictive models in Spark.
+
+Key benefits:
+
+* A managed experience for doing data science end-to-end in Azure, requiring only a browser.
+* Provides the best experience for authoring and running Spark applications, providing a distributed platform that offers high scalability for high-volume machine learning processes.
+* Organizes and secures all artifacts of the data science process, from notebooks, to data, to clusters.
+* Enables simplified collaboration between all collaborators.
+* You can view notebook contents without a running cluster.
+* Supports multiple layers of access control, enabling control over who can use which clusters, which notebooks users can access and what table data users can query. 
+
+Considerations:
+
+* You will be unable to access your notebooks when offline.
+* Running a cluster incurs charges and some operations will require a running cluster, such as listing, creating or querying tables or executing notebooks.
+
 
 ### Azure Notebooks
 Azure Notebooks is an online Jupyter Notebooks service that enables data scientists to create, run, and share Jupyter Notebooks in cloud-based libraries.
@@ -92,19 +123,6 @@ Considerations:
 
 After a data scientist has created a machine learning model, you will typically need to deploy it and consume it from applications or in other data flows. There are a number of potential deployment targets for machine learning models.
 
-### Spark on Azure HDInsight
-
-Apache Spark includes Spark MLlib, a framework and library for machine learning models. The Microsoft Machine Learning library for Spark (MMLSpark) also provides deep learning algorithm support for predictive models in Spark.
-
-Key benefits:
-
-* Spark is a distributed platform that offers high scalability for high-volume machine learning processes.
-* You can deploy models directly to Spark in HDinsight from Azure Machine Learning Workbench, and manage them using the Azure Machine Learning Model Management service.
-
-Considerations:
-
-* Spark runs in an HDinsght cluster that incurs charges the whole time it is running. If the machine learning service will only be used occasionally, this may result in unnecessary costs.
-
 ### Web service in a container
 
 You can deploy a machine learning model as a Python web service in a Docker container. You can deploy the model to Azure or to an edge device, where it can be used locally with the data on which it operates.
@@ -159,3 +177,15 @@ Considerations:
 * Only available for models built using Azure Machine Learning Studio.
 * Web-based access only, trained models cannot run on-premises or offline.
 
+### Azure Databricks
+
+Models can be loaded and utilized by Azure Databricks notebooks for the purposes of scoring in batch, in a scale out fashion across large data sets. Azure Databricks also allows you to schedule the execution of notebooks using its Jobs feature. This enables you to perform batch scoring on a regular schedule, using models you load from external storage like Azure Blob storage. 
+
+Key benefits:
+
+* Scalable approach for performing batch scoring over large data sets.
+* Can execute batch scoring on a schedule. 
+
+Considerations:
+
+* Not suitable for single record at a time style scoring via a web service.  
