@@ -17,13 +17,13 @@ The cloud is changing the way applications are designed, including how data is p
 
 ## How this guide is structured
 
-This guide is structured around two general categories of data solution, *traditional RDBMS workloads* and *big data solutions*. 
+This guide is structured around two general categories of data solution, *traditional RDBMS workloads* and *big data solutions*. The scenarios of *modern data warehousing*, *advanced analytics* and *real-time analytics* are covered between these two general categories.
 
-**[Traditional RDBMS workloads](./relational-data/index.md)**. These workloads include online transaction processing (OLTP) and online analytical processing (OLAP). Data in OLTP systems is typically relational data with a pre-defined schema and a set of constraints to maintain referential integrity. Often, data from multiple sources in the organization may be consolidated into a data warehouse, using an ETL process to move and transform the source data.
+**[Traditional RDBMS workloads](./relational-data/index.md)**. This category covers modern data warehousing and addresses workloads that include online transaction processing (OLTP) and online analytical processing (OLAP). Data in OLTP systems is typically relational data with a pre-defined schema and a set of constraints to maintain referential integrity. Often, data from multiple sources in the organization may be consolidated into a data warehouse, using an ETL process to move and transform the source data.
 
 ![](./images/guide-rdbms.svg)
 
-**[Big data solutions](./big-data/index.md)**. A big data architecture is designed to handle the ingestion, processing, and analysis of data that is too large or complex for traditional database systems. The data may be processed in batch or in real time. Big data solutions typically involve a large amount of non-relational data, such as key-value data, JSON documents, or time series data. Often traditional RDBMS systems are not well-suited to store this type of data. The term *NoSQL* refers to a family of databases designed to hold non-relational data. (The term isn't quite accurate, because many non-relational data stores support SQL compatible queries.)
+**[Big data solutions](./big-data/index.md)**. A big data architecture is designed to handle the ingestion, processing, and analysis of data that is too large or complex for traditional database systems. The data may be processed in batch, supporting *modern data warehousing* scenarios, or in real time, supporting *real-time analytics scenarios*. Big data solutions typically involve a large amount of non-relational data, such as key-value data, JSON documents, or time series data. Often traditional RDBMS systems are not well-suited to store this type of data. The term *NoSQL* refers to a family of databases designed to hold non-relational data (the term NoSQL isn't quite accurate, because many non-relational data stores support SQL compatible queries). In big data solutions are also covered *advanced analytics* scenarios that include the application of machine learning and deep learning in analytics solutions.
 
 ![](./images/guide-big-data.svg)
 
