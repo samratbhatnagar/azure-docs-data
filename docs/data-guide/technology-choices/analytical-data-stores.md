@@ -21,6 +21,7 @@ There are several options for data serving storage in Azure, depending on your n
 - [Azure SQL Database](/azure/sql-database/)
 - [SQL Server in Azure VM](/sql/sql-server/sql-server-technical-documentation)
 - [HBase/Phoenix on HDInsight](/azure/hdinsight/hbase/apache-hbase-overview)
+- [Spark SQL on Azure Databricks](/azure/azure-databricks/what-is-azure-databricks)
 - [Hive LLAP on HDInsight](/azure/hdinsight/interactive-query/apache-interactive-query-get-started)
 - [Azure Analysis Services](/azure/analysis-services/analysis-services-overview)
 - [Azure Cosmos DB](/azure/cosmos-db/)
@@ -61,25 +62,27 @@ The following tables summarize the key differences in capabilities.
  
 ### Scalability capabilities
 
-|                                                  | SQL Database | SQL Data Warehouse | HBase/Phoenix on HDInsight | Hive LLAP on HDInsight | Azure Analysis Services | Cosmos DB |
-|--------------------------------------------------|--------------|--------------------|----------------------------|------------------------|-------------------------|-----------|
-| Redundant regional servers for high availability |     Yes      |        Yes         |            Yes             |           No           |           No            |    Yes    |
-|             Supports query scale out             |      No      |        Yes         |            Yes             |          Yes           |           Yes           |    Yes    |
-|          Dynamic scalability (scale up)          |     Yes      |        Yes         |             No             |           No           |           Yes           |    Yes    |
-|        Supports in-memory caching of data        |     Yes      |        Yes         |             No             |          Yes           |           Yes           |    No     |
+|                                                  | SQL Database | SQL Data Warehouse | HBase/Phoenix on HDInsight | Spark SQL on Azure Databricks         | Hive LLAP on HDInsight | Azure Analysis Services | Cosmos DB |
+|--------------------------------------------------|--------------|--------------------|----------------------------| ------------------------ |------------------------|-------------------------|-----------|
+| Redundant regional servers for high availability |     Yes      |        Yes         |            Yes             | Yes                       |         No           |           No            |    Yes    |
+|             Supports query scale out             |      No      |        Yes         |            Yes             | Yes                       |      Yes           |           Yes           |    Yes    |
+|          Dynamic scalability (scale up)          |     Yes      |        Yes         |             No             | Yes                       |      No           |           Yes           |    Yes    |
+|        Supports in-memory caching of data        |     Yes      |        Yes         |             No             | Yes                        |     Yes           |           Yes           |    No     |
 
 ### Security capabilities
 
-| | SQL Database | SQL Data Warehouse | HBase/Phoenix on HDInsight | Hive LLAP on HDInsight | Azure Analysis Services | Cosmos DB |
-| --- | --- | --- | --- | --- | --- | --- |
-| Authentication  | SQL / Azure Active Directory (Azure AD) | SQL / Azure AD | local / Azure AD <sup>1</sup> | local / Azure AD <sup>1</sup> | Azure AD | database users / Azure AD via access control (IAM) |
-| Data encryption at rest | Yes <sup>2</sup> | Yes <sup>2</sup> | Yes <sup>1</sup> | Yes <sup>1</sup> | Yes | Yes |
-| Row-level security | Yes | No | Yes <sup>1</sup> | Yes <sup>1</sup> | Yes (through object-level security in model) | No |
-| Supports firewalls | Yes | Yes | Yes <sup>3</sup> | Yes <sup>3</sup> | Yes | Yes |
-| Dynamic data masking | Yes | No | Yes <sup>1</sup> | Yes * | No | No |
+| | SQL Database | SQL Data Warehouse | HBase/Phoenix on HDInsight | Spark SQL on Azure Databricks         | Hive LLAP on HDInsight | Azure Analysis Services | Cosmos DB |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Authentication  | SQL / Azure Active Directory (Azure AD) | SQL / Azure AD | local / Azure AD <sup>1</sup> | Azure Active Directory (Azure AD) | local / Azure AD <sup>1</sup> | Azure AD | database users / Azure AD via access control (IAM) |
+| Data encryption at rest | Yes <sup>2</sup> | Yes <sup>2</sup> | Yes <sup>1</sup> | Yes <sup>2</sup> | Yes <sup>1</sup> | Yes | Yes |
+| Row-level security | Yes | No | Yes <sup>1</sup> | Yes <sup>4</sup>  |Yes <sup>1</sup> | Yes (through object-level security in model) | No |
+| Supports firewalls | Yes | Yes | Yes <sup>3</sup> | No  | Yes <sup>3</sup> | Yes | Yes |
+| Dynamic data masking | Yes | No | Yes <sup>1</sup> | No  | Yes * | No | No |
 
 [1] Requires using a [domain-joined HDInsight cluster](/azure/hdinsight/domain-joined/apache-domain-joined-introduction).
 
-[2] Requires using transparent data encryption (TDE) to encrypt and decrypt your data at rest.
+[2] Requires using transparent data encryption (TDE) to encrypt and decrypt your data at rest, as supported by the storage service used.
 
 [3] When used within an Azure Virtual Network. See [Extend Azure HDInsight using an Azure Virtual Network](/azure/hdinsight/hdinsight-extend-hadoop-virtual-network).
+
+[4] Fine-grained security for columns and row matching certain conditions can be achieved using views and [view-based access control](https://docs.azuredatabricks.net/administration-guide/admin-settings/table-acls/object-permissions.html#view-based-access-control).
