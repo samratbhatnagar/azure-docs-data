@@ -115,7 +115,7 @@ The following tables summarize the key differences in capabilities.
 ### General capabilities
 
 | | Azure SQL Database | SQL Server (VM) | SQL Data Warehouse | Azure Databricks | Apache Hive on HDInsight | Hive LLAP on HDInsight |
-| --- | --- | --- | --- | --- | --- | -- | -- |
+| --- | --- | --- | --- | --- | --- | -- |
 | Is managed service | Yes | No | Yes | Yes | Yes <sup>1</sup> | Yes <sup>1</sup> |
 | Requires data orchestration (holds copy of data/historical data) | No | No | Yes | Yes | Yes | Yes |
 | Easily integrate multiple data sources | No | No | Yes | Yes | Yes | Yes |
@@ -138,7 +138,7 @@ The following tables summarize the key differences in capabilities.
 ### Scalability capabilities
 
 | | Azure SQL Database | SQL Server (VM) |  SQL Data Warehouse | Azure Databricks | Apache Hive on HDInsight | Hive LLAP on HDInsight |
-| --- | --- | --- | --- | --- | --- | -- | -- |
+| --- | --- | --- | --- | --- | --- | --- |
 | Redundant regional servers for high availability  | Yes | Yes | Yes | Yes <sup>1</sup> | No | No |
 | Supports query scale out (distributed queries)  | No | No | Yes | Yes | Yes | Yes |
 | Dynamic scalability | Yes | No | Yes <sup>2</sup> | Yes | No | No |
